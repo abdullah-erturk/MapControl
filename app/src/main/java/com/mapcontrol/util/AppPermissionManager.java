@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
 import android.content.pm.ServiceInfo;
 import android.provider.Settings;
-import android.text.TextUtils;
 
 import com.mapcontrol.admin.MapControlDeviceAdminReceiver;
 
@@ -265,7 +264,7 @@ public final class AppPermissionManager {
     }
 
     static boolean listContains(String list, String component) {
-        if (TextUtils.isEmpty(list) || "null".equals(list)) {
+        if ((list == null || list.isEmpty()) || "null".equals(list)) {
             return false;
         }
         for (String raw : list.split(":")) {
@@ -277,7 +276,7 @@ public final class AppPermissionManager {
     }
 
     static String withEntry(String list, String component) {
-        if (TextUtils.isEmpty(list) || "null".equals(list.trim())) {
+        if ((list == null || list.isEmpty()) || "null".equals(list.trim())) {
             return component;
         }
         if (listContains(list, component)) {
@@ -287,7 +286,7 @@ public final class AppPermissionManager {
     }
 
     static String withoutEntry(String list, String component) {
-        if (TextUtils.isEmpty(list) || "null".equals(list.trim())) {
+        if ((list == null || list.isEmpty()) || "null".equals(list.trim())) {
             return "";
         }
         StringBuilder sb = new StringBuilder();
